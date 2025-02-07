@@ -48,7 +48,6 @@
             color: white;
             font-weight: bold;
             transition: 0.2s;
-            position: relative;
         }
 
         button:hover {
@@ -88,7 +87,7 @@
 
     <div class="button-container">
         <button id="yesButton" onclick="sayYes()">Yesss</button>
-        <button id="nahbroButton" onmouseover="moveNahbroButton(event)">Naahh homie, yo ass be too damn cheesy</button>
+        <button id="nahbroButton" onmouseover="moveNahbroButton(event)">Naahh homie</button>
     </div>
 
     <p id="message"></p>
@@ -98,16 +97,23 @@
             const nahbroButton = document.getElementById("nahbroButton");
             const screenWidth = window.innerWidth;
             const screenHeight = window.innerHeight;
-            const cursorX = event.clientX;
-            const cursorY = event.clientY;
+            const buttonWidth = nahbroButton.clientWidth;
+            const buttonHeight = nahbroButton.clientHeight;
 
-            // Determine which direction is the farthest from the cursor
-            let newX = cursorX < screenWidth / 2 ? screenWidth - 200 : 10; // Moves to the farthest X
-            let newY = cursorY < screenHeight / 2 ? screenHeight - 100 : 10; // Moves to the farthest Y
+            // Define possible corner positions
+            const corners = [
+                { left: "10px", top: "10px" }, // Top-left
+                { left: `${screenWidth - buttonWidth - 10}px`, top: "10px" }, // Top-right
+                { left: "10px", top: `${screenHeight - buttonHeight - 10}px` }, // Bottom-left
+                { left: `${screenWidth - buttonWidth - 10}px`, top: `${screenHeight - buttonHeight - 10}px` } // Bottom-right
+            ];
+
+            // Pick a random corner
+            const randomCorner = corners[Math.floor(Math.random() * corners.length)];
 
             nahbroButton.style.position = "absolute";
-            nahbroButton.style.left = `${newX}px`;
-            nahbroButton.style.top = `${newY}px`;
+            nahbroButton.style.left = randomCorner.left;
+            nahbroButton.style.top = randomCorner.top;
         }
 
         function sayYes() {
