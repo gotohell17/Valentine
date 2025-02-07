@@ -84,11 +84,11 @@
     </style>
 </head>
 <body>
-    <h1>Hii baby! Will you be my Valentine?</h1>
+    <h1>Hii baby! Will you be my Valentine? 💛</h1>
 
     <div class="button-container">
         <button id="yesButton" onclick="sayYes()">Yesss</button>
-        <button id="nahbroButton" onmouseover="moveNahbroButton()">Naahh homie, yo ass be too damn cheesy</button>
+        <button id="nahbroButton" onmouseover="moveNahbroButton(event)">Naahh homie, yo ass be too damn cheesy</button>
     </div>
 
     <p id="message"></p>
@@ -98,7 +98,7 @@
             const nahbroButton = document.getElementById("nahbroButton");
 
             let newX, newY;
-            const buffer = 100; // Extra space to avoid cursor
+            const buffer = 150; // Extra space to avoid cursor
 
             do {
                 newX = Math.random() * (window.innerWidth - nahbroButton.clientWidth - 50);
