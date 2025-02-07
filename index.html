@@ -31,10 +31,10 @@
 
         .button-container {
             margin-top: 20px;
-            position: relative;
             display: flex;
             justify-content: center;
             gap: 20px;
+            position: relative;
         }
 
         button {
@@ -48,6 +48,7 @@
             color: white;
             font-weight: bold;
             transition: 0.2s;
+            position: relative;
         }
 
         button:hover {
@@ -55,8 +56,8 @@
         }
 
         #nahbroButton {
-            position: absolute;
             background-color: #f5b700; /* Darker yellow */
+            position: relative; /* Ensures it starts in place */
         }
 
         #message {
@@ -83,19 +84,18 @@
     </style>
 </head>
 <body>
-    <h1>Hii baby, will you be my Valentine?</h1>
-    
+    <h1>Hii baby, will you be my Valentine? 💛</h1>
+
     <div class="button-container">
-        <button id="yesButton" onclick="sayYes()">Yesss! </button>
-        <button id="nahbroButton" onmouseover="movenahbroButton()">Naahh bro</button>
+        <button id="yesButton" onclick="sayYes()">Yesss! 💛</button>
+        <button id="nahbroButton" onmouseover="moveNahbroButton()">Naahh bro 😂</button>
     </div>
 
     <p id="message"></p>
-    <p class="heart">💛</p>
 
     <script>
-        function movenahbroButton() {
-            const noButton = document.getElementById("nahbroButton");
+        function moveNahbroButton() {
+            const nahbroButton = document.getElementById("nahbroButton");
             const maxX = window.innerWidth - nahbroButton.clientWidth - 100;
             const maxY = window.innerHeight - nahbroButton.clientHeight - 100;
 
@@ -108,7 +108,7 @@
         }
 
         function sayYes() {
-            document.getElementById("message").innerHTML = "Yaaayy! Lessgoo! I kinda had a feeling you'd say yes. I love youu. Muaaah 💕";
+            document.getElementById("message").innerHTML = "Yaaayy! Lessgoo! 🎉 I kinda had a feeling you'd say yes! I love youuu. Muaaah 💕";
             document.getElementById("message").style.opacity = 1;
             document.getElementById("yesButton").disabled = true;
             document.getElementById("nahbroButton").style.display = "none"; // Hides the No button
