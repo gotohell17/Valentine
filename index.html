@@ -87,12 +87,14 @@
 
     <div class="button-container">
         <button id="yesButton" onclick="sayYes()">Yesss</button>
-        <button id="nahbroButton" onmouseover="moveNahbroButton(event)">Naahh homie</button>
+        <button id="nahbroButton" onmouseover="moveNahbroButton(event)">Naahh homie, yo ass be too damn cheesy</button>
     </div>
 
     <p id="message"></p>
 
     <script>
+        let lastCorner = -1; // Stores the last corner used
+
         function moveNahbroButton(event) {
             const nahbroButton = document.getElementById("nahbroButton");
             const screenWidth = window.innerWidth;
@@ -108,12 +110,16 @@
                 { left: `${screenWidth - buttonWidth - 10}px`, top: `${screenHeight - buttonHeight - 10}px` } // Bottom-right
             ];
 
-            // Pick a random corner
-            const randomCorner = corners[Math.floor(Math.random() * corners.length)];
+            let newCorner;
+            do {
+                newCorner = Math.floor(Math.random() * corners.length);
+            } while (newCorner === lastCorner); // Ensures it doesn't repeat the last corner
+
+            lastCorner = newCorner; // Update the last used corner
 
             nahbroButton.style.position = "absolute";
-            nahbroButton.style.left = randomCorner.left;
-            nahbroButton.style.top = randomCorner.top;
+            nahbroButton.style.left = corners[newCorner].left;
+            nahbroButton.style.top = corners[newCorner].top;
         }
 
         function sayYes() {
