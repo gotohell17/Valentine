@@ -48,7 +48,6 @@
             color: white;
             font-weight: bold;
             transition: 0.2s;
-            position: relative;
         }
 
         button:hover {
@@ -57,7 +56,7 @@
 
         #nahbroButton {
             background-color: #f5b700; /* Darker yellow */
-            position: absolute; /* Ensures it moves properly */
+            position: relative; /* Initially, it stays in place */
         }
 
         #message {
@@ -96,18 +95,23 @@
     <script>
         function moveNahbroButton(event) {
             const nahbroButton = document.getElementById("nahbroButton");
+            const buttonWidth = nahbroButton.clientWidth;
+            const buttonHeight = nahbroButton.clientHeight;
+            const screenWidth = window.innerWidth;
+            const screenHeight = window.innerHeight;
 
             let newX, newY;
-            const buffer = 150; // Extra space to avoid cursor
+            const buffer = 100; // Distance away from cursor
 
             do {
-                newX = Math.random() * (window.innerWidth - nahbroButton.clientWidth - 50);
-                newY = Math.random() * (window.innerHeight - nahbroButton.clientHeight - 50);
+                newX = Math.random() * (screenWidth - buttonWidth - 50);
+                newY = Math.random() * (screenHeight - buttonHeight - 50);
             } while (
                 Math.abs(newX - event.clientX) < buffer || 
                 Math.abs(newY - event.clientY) < buffer
             );
 
+            nahbroButton.style.position = "absolute";
             nahbroButton.style.left = `${newX}px`;
             nahbroButton.style.top = `${newY}px`;
         }
