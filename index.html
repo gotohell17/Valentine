@@ -56,7 +56,7 @@
 
         #nahbroButton {
             background-color: #f5b700; /* Darker yellow */
-            position: absolute; /* It moves around */
+            position: absolute; /* Moves around */
         }
 
         #message {
@@ -87,7 +87,7 @@
 
     <div class="button-container">
         <button id="yesButton" onclick="sayYes()">Yesss</button>
-        <button id="nahbroButton" onmousemove="moveNahbroButton(event)">Naahh homie</button>
+        <button id="nahbroButton" onmouseover="moveNahbroButton(event)">Naahh homie</button>
     </div>
 
     <p id="message"></p>
@@ -107,17 +107,18 @@
             const isNearY = Math.abs(cursorY - (buttonRect.top + buttonRect.height / 2)) < buffer;
 
             if (isNearX || isNearY) {
-                // Move to a random corner
-                const corners = [
-                    { left: "10px", top: "10px" }, // Top-left
-                    { left: `${screenWidth - buttonRect.width - 10}px`, top: "10px" }, // Top-right
-                    { left: "10px", top: `${screenHeight - buttonRect.height - 10}px` }, // Bottom-left
-                    { left: `${screenWidth - buttonRect.width - 10}px`, top: `${screenHeight - buttonRect.height - 10}px` } // Bottom-right
-                ];
-                
-                const randomCorner = corners[Math.floor(Math.random() * corners.length)];
-                nahbroButton.style.left = randomCorner.left;
-                nahbroButton.style.top = randomCorner.top;
+                let newX, newY;
+
+                do {
+                    newX = Math.random() * (screenWidth - buttonRect.width - 50);
+                    newY = Math.random() * (screenHeight - buttonRect.height - 50);
+                } while (
+                    Math.abs(newX - cursorX) < buffer || 
+                    Math.abs(newY - cursorY) < buffer
+                );
+
+                nahbroButton.style.left = `${newX}px`;
+                nahbroButton.style.top = `${newY}px`;
             }
         }
 
