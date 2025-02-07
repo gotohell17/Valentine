@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>A Special Question for You 💛</title>
+    <title>Hi baby! I wanna ask you something 💛</title>
     
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Nunito:wght@300;400;700&display=swap" rel="stylesheet">
@@ -32,13 +32,15 @@
         .button-container {
             margin-top: 20px;
             position: relative;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
         }
 
         button {
             font-family: 'Nunito', sans-serif;
             font-size: 22px;
             padding: 15px 30px;
-            margin: 20px;
             cursor: pointer;
             border: none;
             border-radius: 10px;
@@ -52,7 +54,7 @@
             background-color: #ffdb4d; /* Softer yellow */
         }
 
-        #noButton {
+        #nahbroButton {
             position: absolute;
             background-color: #f5b700; /* Darker yellow */
         }
@@ -81,29 +83,36 @@
     </style>
 </head>
 <body>
-    <h1>Hey sunshine, will you be my Valentine? ☀️💛</h1>
-    <p>You light up my world like the sun! 🌞</p>
-
+    <h1>Hii baby, will you be my Valentine?</h1>
+    
     <div class="button-container">
-        <button id="yesButton" onclick="sayYes()">Yes! 😊</button>
-        <button id="noButton" onmouseover="moveNoButton()">No 😢</button>
+        <button id="yesButton" onclick="sayYes()">Yesss! </button>
+        <button id="nahbroButton" onmouseover="movenahbroButton()">Naahh bro</button>
     </div>
 
     <p id="message"></p>
     <p class="heart">💛</p>
 
     <script>
-        function moveNoButton() {
-            const noButton = document.getElementById("noButton");
-            const maxX = window.innerWidth - noButton.clientWidth - 50;
-            const maxY = window.innerHeight - noButton.clientHeight - 50;
+        function movenahbroButton() {
+            const noButton = document.getElementById("nahbroButton");
+            const maxX = window.innerWidth - nahbroButton.clientWidth - 100;
+            const maxY = window.innerHeight - nahbroButton.clientHeight - 100;
 
             const randomX = Math.random() * maxX;
             const randomY = Math.random() * maxY;
 
-            noButton.style.left = `${randomX}px`;
-            noButton.style.top = `${randomY}px`;
+            nahbroButton.style.position = "absolute";
+            nahbroButton.style.left = `${randomX}px`;
+            nahbroButton.style.top = `${randomY}px`;
         }
 
         function sayYes() {
-            document.getElementById("message").innerHTML = "Yay! 🥳 I knew you’d say yes! 💕 Le
+            document.getElementById("message").innerHTML = "Yaaayy! Lessgoo! I kinda had a feeling you'd say yes. I love youu. Muaaah 💕";
+            document.getElementById("message").style.opacity = 1;
+            document.getElementById("yesButton").disabled = true;
+            document.getElementById("nahbroButton").style.display = "none"; // Hides the No button
+        }
+    </script>
+</body>
+</html>
