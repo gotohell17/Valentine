@@ -57,7 +57,7 @@
 
         #nahbroButton {
             background-color: #f5b700; /* Darker yellow */
-            position: relative; /* Ensures it starts in place */
+            position: absolute; /* Ensures it moves properly */
         }
 
         #message {
@@ -94,17 +94,22 @@
     <p id="message"></p>
 
     <script>
-        function moveNahbroButton() {
+        function moveNahbroButton(event) {
             const nahbroButton = document.getElementById("nahbroButton");
-            const maxX = window.innerWidth - nahbroButton.clientWidth - 100;
-            const maxY = window.innerHeight - nahbroButton.clientHeight - 100;
 
-            const randomX = Math.random() * maxX;
-            const randomY = Math.random() * maxY;
+            let newX, newY;
+            const buffer = 100; // Extra space to avoid cursor
 
-            nahbroButton.style.position = "absolute";
-            nahbroButton.style.left = `${randomX}px`;
-            nahbroButton.style.top = `${randomY}px`;
+            do {
+                newX = Math.random() * (window.innerWidth - nahbroButton.clientWidth - 50);
+                newY = Math.random() * (window.innerHeight - nahbroButton.clientHeight - 50);
+            } while (
+                Math.abs(newX - event.clientX) < buffer || 
+                Math.abs(newY - event.clientY) < buffer
+            );
+
+            nahbroButton.style.left = `${newX}px`;
+            nahbroButton.style.top = `${newY}px`;
         }
 
         function sayYes() {
